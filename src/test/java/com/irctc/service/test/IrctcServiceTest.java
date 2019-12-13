@@ -39,6 +39,7 @@ public class IrctcServiceTest {
 		ticket.setStatus("CNF");
 		Mockito.when(irctcRepo.save(Mockito.any())).thenReturn(ticket);
 		Mockito.when(irctcRepo.findByPnr("256423")).thenReturn(ticket);
+		 ReflectionTestUtils.setField(rsaServiceImpl, "restTemplate", restTemplate);
 	}
 
 	@Test
