@@ -74,4 +74,11 @@ public class IrctcServiceTest {
 		Assert.assertEquals("B3", ticketRes.getCoachNo());
 		Assert.assertEquals("256423", ticketRes.getPnr());
 	}
+	
+	private <R> void mockRestServiceInvoker(R r) throws Exception {
+		when(restTemplate.exchange(ArgumentMatchers.anyString(), ArgumentMatchers.any(HttpMethod.class),
+				ArgumentMatchers.<HttpEntity<?>>any(), ArgumentMatchers.<Class<R>>any()))
+						.thenReturn(new ResponseEntity<R>(r, HttpStatus.OK));
+
+	} 
 }
